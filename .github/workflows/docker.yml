@@ -24,6 +24,6 @@ jobs:
         with:
           push: true
           tags: |
-            docker.pkg.github.com/${{ github.repository }}/lunarvim:latest
-            docker.pkg.github.com/${{ github.repository }}/lunarvim:${{ github.sha }}
-            docker.pkg.github.com/${{ github.repository }}/lunarvim:${{ github.ref }}
+            docker.pkg.github.com/${{ lowercase(github.repository) }}/lunarvim:latest
+            docker.pkg.github.com/${{ lowercase(github.repository) }}/lunarvim:${{ github.sha }}
+            docker.pkg.github.com/${{ lowercase(github.repository) }}/lunarvim:${{ github.ref }}
