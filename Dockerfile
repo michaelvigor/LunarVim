@@ -23,7 +23,7 @@ RUN groupdel users                                              \
 
 USER lunarvim
 
-WORKDIR $HOME
+WORKDIR /code
 
 COPY . /opt/LunarVim/
 
