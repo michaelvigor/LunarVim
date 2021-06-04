@@ -4,6 +4,8 @@ ENV TZ=Europe/London
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get install -y \
+    curl \
+    unzip \
     python3-pip \
     git \
     nodejs \
@@ -23,7 +25,7 @@ RUN groupdel users                                              \
 
 USER lunarvim
 
-WORKDIR $HOME
+WORKDIR /code
 
 COPY . /opt/LunarVim/
 
