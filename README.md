@@ -101,6 +101,21 @@ bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/mas
 
 After installation run `nvim` and then `:PackerInstall`
 
+## Run from docker container
+
+``` bash
+docker run --rm -it --name lunarvim -v "$PWD":/code docker.pkg.github.com/michaelvigor/lunarvim/lunarvim:latest
+```
+This docker image already has the packer plugins installed, but no language servers have been setup. You can run 
+
+```
+:LspInstall <language>
+```
+to install the language servers you need, then run docker commit to tag your new customised image:
+```
+docker commit lunarvim lunarvim:custom
+```
+
 ## Get the latest version of Neovim
 
 Some operating systems package versions of Neovim 0.5. You can install
