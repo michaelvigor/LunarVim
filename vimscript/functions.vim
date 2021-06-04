@@ -71,3 +71,10 @@ function! QuickFixToggle()
         cclose
     endif
 endfunction
+
+function! s:runPackerInstallAndQuit()
+  autocmd User PackerComplete qa
+  PackerInstall
+endfunction
+
+command RunPackerInstallAndQuit call s:runPackerInstallAndQuit()

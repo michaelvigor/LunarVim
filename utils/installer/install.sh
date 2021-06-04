@@ -77,14 +77,11 @@ installpacker() {
 	git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 }
 
-cloneconfig() {
+setupconfig() {
 	echo "Cloning LunarVim configuration"
-	git clone https://github.com/ChristianChiarulli/lunarvim.git ~/.config/nvim
-	# mv $HOME/.config/nvim/init.lua $HOME/.config/nvim/init.lua.tmp
-	# mv $HOME/.config/nvim/utils/init.lua $HOME/.config/nvim/init.lua
-	nvim -u $HOME/.config/nvim/init.lua +PackerInstall
-	# rm $HOME/.config/nvim/init.lua
-	# mv $HOME/.config/nvim/init.lua.tmp $HOME/.config/nvim/init.lua
+	mkdir -p ~/.config/nvim
+	cp -r /opt/LunarVim/* ~/.config/nvim
+	nvim --headless -u $HOME/.config/nvim/minimal.lua +RunPackerInstallAndQuit
 }
 
 asktoinstallnode() {
@@ -166,10 +163,7 @@ fi
 if [ -e "$HOME/.config/nvim/init.lua" ]; then
 	echo 'nvcode already installed'
 else
-	# clone config down
-	cloneconfig
-	# echo 'export PATH=$HOME/.config/nvim/utils/bin:$PATH' >>~/.zshrc
-	# echo 'export PATH=$HOME/.config/nvcode/utils/bin:$PATH' >>~/.bashrc
+	setupconfig
 fi
 
 echo "I recommend you also install and activate a font from here: https://github.com/ryanoasis/nerd-fonts"
